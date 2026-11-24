@@ -1,13 +1,6 @@
 # Open Sprite Runtime
 
 Canonical repository: [TonyInvent/open_sprite_runtime](https://github.com/TonyInvent/open_sprite_runtime).
-The repository has moved from the BeijingDynamics organization to TonyInvent.
-Existing clones can update their remote with:
-
-```bash
-git remote set-url origin https://github.com/TonyInvent/open_sprite_runtime.git
-```
-
 ## Selected SPI Xbox entry: 800 Hz snapshots (November 24, 2026)
 
 The operator selected the **SPI ICM-45686 + 800 Hz asynchronous snapshot client**
