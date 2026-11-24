@@ -2,6 +2,12 @@
 
 Canonical repository: [TonyInvent/open_sprite_runtime](https://github.com/TonyInvent/open_sprite_runtime).
 
+For entry-point selection, see the [script directory guide](scripts/README.md).
+Historical commissioning scripts have moved to `scripts/archive/`; current
+OpenIMU entries and compatibility-sensitive dependencies keep their original
+paths. Older development documents retain their original command lines; the
+guide includes a filename inventory and a pre-cleanup checkout for reproduction.
+
 ## OpenIMU 800 Hz Xbox runtime
 
 **OpenIMU over CAN FD is the primary IMU backend and the focus of ongoing

@@ -1,0 +1,680 @@
+{
+  "schema_version": 1,
+  "source_commit": "76f199ec74d1014dd840bf34026c5662063fb9f4",
+  "date": "2026-11-24",
+  "hash_format": "SHA-256 of UTF-8 file bytes with CRLF normalized to LF",
+  "entries": [
+    {
+      "original_path": "build_sprite0825_icm45686_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "229aad480e2b856673b722b42cf7806515d8f951dd240fef70fb4e40be02188a",
+      "path": "build_sprite0825_icm45686_on_253.sh"
+    },
+    {
+      "original_path": "build_sprite0825_native_runtime_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "fa062134007305ea536928d39fa460929960a8bdcf6b137545fcb85cea4b4eda",
+      "path": "build_sprite0825_native_runtime_on_253.sh"
+    },
+    {
+      "original_path": "build_sprite0825_openimu_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "a5c6e87d7053d22e04fd7e05fdd1e1069f23bd1e763c24adac8bcb7ed5611205",
+      "path": "build_sprite0825_openimu_on_253.sh"
+    },
+    {
+      "original_path": "capture_sprite0825_system_id_can_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "a10b3a255e9ade42fe21c5b201dad0f5edfce9d43292a084e9e00c9945827c4f",
+      "path": "scripts/archive/system_identification/capture_sprite0825_system_id_can_on_253.sh"
+    },
+    {
+      "original_path": "compare_sprite0825_openimu_spi_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "0e1c34c1133888edf347c2a27144da6e7d0c415ebd3c6ed4df874efc106b8ba1",
+      "path": "compare_sprite0825_openimu_spi_on_253.sh"
+    },
+    {
+      "original_path": "diagnose_sprite_icm_spi_pm_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "a79253c467f725f802266196f2d242b41be17460fe619915cb06508cc9a858b8",
+      "path": "scripts/archive/imu_diagnostics/diagnose_sprite_icm_spi_pm_on_253.sh"
+    },
+    {
+      "original_path": "fix_right_ankle_pitch_sign_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "63f7da869ce510464921dbd4a92c4df47a35886473d093f4e5093c2217069fff",
+      "path": "scripts/archive/motor_commissioning/fix_right_ankle_pitch_sign_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_head_yaw_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "836db6335ab7f14ef560b0d4b11784b00d2fb8736ffaae76df124da78b757f45",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_head_yaw_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_left_arm_group_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "2c1a981f4bc8cab4db7155f907d0ca5eb913686bd4e18d365df42a5edd3b083d",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_left_arm_group_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_left_proximal_leg_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "bfbf9b4c837d91498d10457d5f7ad0df2ed0ed9ce358514495e0757d7daee9f5",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_left_proximal_leg_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_native_full_body_measured_pose_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "cf1d4c8ec2c742bb88eb60593a4deb242c96f008fca0f3ac424b3693abbc2c63",
+      "path": "scripts/archive/legacy_trials/hold_sprite0825_native_full_body_measured_pose_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_right_arm_group_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "d8e3ee1ceb24f8316c3459b2333ad4daa1a48db57e7abaa9b335f7961e903188",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_right_arm_group_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_right_proximal_leg_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "9699d54fefd4c6bb77d363f63357b34cdd8693846ab1969fb687d2bfedb2c7ae",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_right_proximal_leg_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_right_wrist_group_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "c7282ba510898b8fc8c727ae66ca49d2cfc09dcda52bb328762d1b0e77101290",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_right_wrist_group_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_right_wrist_roll_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "cc06ec7bde6ef13b7e164f17ef77dbeed6ca49368eacb35b62325c0bfc63a7b8",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_right_wrist_roll_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "hold_sprite0825_waist_group_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "b8c2c12787125c7c6bdebdbfbb824f1ec49b6117cf1b3e9e5782c0449bba7e2a",
+      "path": "scripts/archive/motor_commissioning/hold_sprite0825_waist_group_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "inspect_sprite_spi_clock_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "12b2062dd146d900e38305dfb997109dbd45136c2292bbb9b95bd60742cf34e5",
+      "path": "scripts/archive/imu_diagnostics/inspect_sprite_spi_clock_on_253.sh"
+    },
+    {
+      "original_path": "install_sprite0825_imu_udev_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "1b5581851b0cad328a023361a2256a011d0559471026e693f1a638c80926b9d0",
+      "path": "install_sprite0825_imu_udev_on_253.sh"
+    },
+    {
+      "original_path": "install_sprite0825_native_realtime_capability_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "7c7d0fa5ec9c207d88a555cf7e173853c38e23f3a4fedfa87338ea7e1f6d1d2b",
+      "path": "install_sprite0825_native_realtime_capability_on_253.sh"
+    },
+    {
+      "original_path": "install_sprite0825_native_runtime_capabilities_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "5737c53626ddd63d125c403b2ffd580810005d4f091d68ae8af4462095e1eac6",
+      "path": "install_sprite0825_native_runtime_capabilities_on_253.sh"
+    },
+    {
+      "original_path": "merge_sprite0825_system_id_session_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "9a4a4f4a6f1ca2b4cf87122875795e2818336436da13c2ca0b33ea080e9fb1d5",
+      "path": "scripts/archive/system_identification/merge_sprite0825_system_id_session_on_253.sh"
+    },
+    {
+      "original_path": "move_sprite0825_head_yaw_low_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "02e2e9eaae3f49bd4413053c3aaf5ce6162ed5066c687f0dc4f38078da5d02fd",
+      "path": "scripts/archive/motor_commissioning/move_sprite0825_head_yaw_low_gain_on_253.sh"
+    },
+    {
+      "original_path": "move_sprite0825_head_yaw_visible_10deg_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "7cd0548c0cc8153fa75568cd5dd5a05e7c6594d69bf51152a1b73e379cdf78aa",
+      "path": "scripts/archive/motor_commissioning/move_sprite0825_head_yaw_visible_10deg_on_253.sh"
+    },
+    {
+      "original_path": "move_sprite0825_right_hip_yaw_5deg_medium_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "477f5620ed431053758012f698315a9c52cc935041a33b01d73a66a1a9d76414",
+      "path": "scripts/archive/motor_commissioning/move_sprite0825_right_hip_yaw_5deg_medium_on_253.sh"
+    },
+    {
+      "original_path": "move_sprite0825_right_hip_yaw_5deg_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "d48bad735585d187eec816c0226ffb7962cdb1e320aaa564a8a497a8d40dbd4e",
+      "path": "scripts/archive/motor_commissioning/move_sprite0825_right_hip_yaw_5deg_on_253.sh"
+    },
+    {
+      "original_path": "move_sprite0825_right_wrist_roll_5deg_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "0244994837cc65019722c97be18365c75d386582e466a311c5d2936933c747a6",
+      "path": "scripts/archive/motor_commissioning/move_sprite0825_right_wrist_roll_5deg_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_bno_software_no_can_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "157865ef3359eab54e617d91e924983cc8fd4a676147bfef83baee624662e741",
+      "path": "scripts/archive/imu_diagnostics/probe_sprite0825_bno_software_no_can_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_bno055_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "5a91c793666f64a9c73ba46e7f4bec833442f6765d468eb01ba5432f0a9f7e1c",
+      "path": "scripts/archive/imu_diagnostics/probe_sprite0825_bno055_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_bno055_policy_shadow_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "8e01bf6c5b7e990d3cca1c87811543897b05c28b8a13096f03bad5eeeeee6dbc",
+      "path": "probe_sprite0825_bno055_policy_shadow_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd1_zero_gain_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "076a1f444af880870ac2928e18d88b99578cd0f0543d9aaca62202f08cbc6ce3",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd1_zero_gain_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd1_zero_gain_stress_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "2e07a7b1494b401c9a010814e3c1b7382a9170924dcb7b8e12871245ccec5268",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd1_zero_gain_stress_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd2_right_leg_zero_gain_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "2fabf62c33aa8d6f4ea3f69f26374ae7a129fc6b7a961093b77e1734b5fe78dd",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd2_right_leg_zero_gain_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd2_right_leg_zero_gain_stress_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "14796e3945d7a669aa6635e5694e3e6852ce0661a2533bdca20c91e431d2482d",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd2_right_leg_zero_gain_stress_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd3_left_arm_zero_gain_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "cc5ba4f6d6e17456ab52531af6b7a2850a1caa1b5171bb9a224619e3f2331429",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd3_left_arm_zero_gain_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd3_left_arm_zero_gain_stress_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "88d06ebae2afeca6201fa59f3b57affc194af5517b94ca1eec9b2b88d9edebaa",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd3_left_arm_zero_gain_stress_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd4_right_arm_zero_gain_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "63aef8253236663c09c7f0ed5db46591bbdbd78e80c5d9f259f6328e2acd44f6",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd4_right_arm_zero_gain_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_canfd4_right_arm_zero_gain_stress_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "9b332c152c22e566fe0304d1251d9ad831317c973bed7d49f35005de96adef02",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_canfd4_right_arm_zero_gain_stress_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_damiao_zero_gain_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "1ab14be8ec5bd76a9cb3703b8a615c1a2c090dc48ae8d32cac47ff78c41b56c3",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_damiao_zero_gain_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_damiao_zero_gain_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "2fe1eeec50bef3baf33fed371c343e9e7191ddd9e6980e60348efc55bc39d6be",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_damiao_zero_gain_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_dual_imu_yaw_guided_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "e1b5aa69eb629573e2a7b0e809507a5e98a32e6aeb519ca384958ea2db165d59",
+      "path": "scripts/archive/imu_diagnostics/probe_sprite0825_dual_imu_yaw_guided_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_full_body_shadow_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "431b1f9f1b4e348b73f625ec931edcf858dff915ede804b95249fed3b94ed458",
+      "path": "scripts/archive/motor_commissioning/probe_sprite0825_full_body_shadow_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_icm45686_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "ce3701d82b4861e5419f0281d122905d6b9550e3f1c8d64b56d48c2b73c3eae9",
+      "path": "probe_sprite0825_icm45686_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_native_500hz_timing_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "a8ceb4d3cbcdf158f360c85442f28f299582aa69ccf5acdb4349cdf0dd8ad492",
+      "path": "scripts/archive/legacy_trials/probe_sprite0825_native_500hz_timing_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_native_bno_full_shadow_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "7ec32bf2ad5d53b8cdcb5ad0809b33dedb2bbb6c29c1a093cd1ca7415c537f66",
+      "path": "scripts/archive/imu_diagnostics/probe_sprite0825_native_bno_full_shadow_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_native_bno_no_can_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "93b1e1d54fc1786d84b8408ccf3eb7f144dc53251aad07c2597c7a3ca40d8538",
+      "path": "scripts/archive/imu_diagnostics/probe_sprite0825_native_bno_no_can_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_native_ipc_faults_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "a10516885ef41f6376d2b785d8d8fe26099569196db189efc5ab405a086198f5",
+      "path": "scripts/archive/legacy_trials/probe_sprite0825_native_ipc_faults_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_native_mixed_rate_can_shadow_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "e1cc55c91f5d78f1d2a7265ea808af8fc0a6dbaeacd3501538782fbc0e337250",
+      "path": "scripts/archive/legacy_trials/probe_sprite0825_native_mixed_rate_can_shadow_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_native_policy_ipc_shadow_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "8cf104d30385222c14265bb6e7c1a8895d05a5497346e1d44e4f7ef4919d32f9",
+      "path": "scripts/archive/legacy_trials/probe_sprite0825_native_policy_ipc_shadow_on_253.sh"
+    },
+    {
+      "original_path": "probe_sprite0825_walk005_schedule_shadow_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "0ff420659bdf8368529383286655f6a0f33d5e3ad56fa6f6623036d776ac5828",
+      "path": "scripts/archive/legacy_trials/probe_sprite0825_walk005_schedule_shadow_on_253.sh"
+    },
+    {
+      "original_path": "qualify_sprite0825_icm_native_shadow_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "fd2e1b2b3c98a8aa14a2c4b115ccf0d6378661f6f63578948d20920149abc7a2",
+      "path": "scripts/archive/imu_diagnostics/qualify_sprite0825_icm_native_shadow_on_253.sh"
+    },
+    {
+      "original_path": "qualify_sprite0825_imu800_shadow_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "dde42a8a2af66c431025650c6eb18e38bea16e52776c2211c4d95e39d8237cac",
+      "path": "qualify_sprite0825_imu800_shadow_on_253.sh"
+    },
+    {
+      "original_path": "read_sprite0825_damiao_commissioning_registers_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "74953c7485b0a639f55cc21c888d67be909dcd60c0b6e9a9a554965503427ae4",
+      "path": "scripts/archive/motor_commissioning/read_sprite0825_damiao_commissioning_registers_on_253.sh"
+    },
+    {
+      "original_path": "read_sprite0825_damiao_mit_ranges_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "15d3000fc66b3f6136738a9f79bfe1eb8f45c2a0a0fe1b48686c785660016f41",
+      "path": "scripts/archive/motor_commissioning/read_sprite0825_damiao_mit_ranges_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_bno055_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "5a1ab99cc13d461ae05efb2c7ec1e283fd7850157e141b00b6bc0ecae5db9fa4",
+      "path": "scripts/archive/imu_diagnostics/review_sprite0825_bno055_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_damiao_rx_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "82fc84329ddcd3f234d8040f8ef2f84b8aecfa5ec870d425385a811544e9059e",
+      "path": "scripts/archive/motor_commissioning/review_sprite0825_damiao_rx_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_icm45686_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "d74748cd1609db8f1368f88c6176e5a79a617a9cc0ab63694947c796b88fd723",
+      "path": "scripts/archive/imu_diagnostics/review_sprite0825_icm45686_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_imu_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "323c352a7e430463798d2d998faafbaec7d9ad5179f37d9983ead996800a7f45",
+      "path": "scripts/archive/imu_diagnostics/review_sprite0825_imu_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_openimu_mujoco_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "dfd9bad53dd25a39a3f318ac7a5ce5b20f87d676ef69120e33ec45be067246a8",
+      "path": "review_sprite0825_openimu_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_software_imu_mujoco_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "df7b9db754d340d9ab742790c9e290434345faa6b2bfa4c2526f3d36319ad9a7",
+      "path": "scripts/archive/imu_diagnostics/review_sprite0825_software_imu_mujoco_on_253.sh"
+    },
+    {
+      "original_path": "review_sprite0825_walk005_stop_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "9b321085abc525d3184c7e0816b9f8695d3cd10e1b2b665a6445dfeb50eb3095",
+      "path": "scripts/archive/legacy_trials/review_sprite0825_walk005_stop_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite_runtime_jetson.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "e1bb9d5e085b372536cd94c9c0fa7bcd33ba15c1807975fbad563ea21b6beaa1",
+      "path": "run_sprite_runtime_jetson.sh"
+    },
+    {
+      "original_path": "run_sprite0825_bno055_waist60kd3_walk40_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "c3d6793cbf944f08d05e39c65f39667601c505e82cf37bbb48f78a37f30ec45f",
+      "path": "run_sprite0825_bno055_waist60kd3_walk40_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_full_native_walk40_candidate_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "f5eb73d07bea90a3cf1a3e2761dac1703633190968765d71fdc52444c854a366",
+      "path": "run_sprite0825_full_native_walk40_candidate_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_head_pair_low_joint_pd_500hz_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "301aa1fcbad0e3ccfffaa55794db787b9f2a6186e0f1a8b2a80a37455a68ec6b",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_head_pair_low_joint_pd_500hz_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_icm_native_admission.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "328f7e699dbde3634cfd7d1a03f6ef5d44d40a70cc64e16f21fa2b5c0dd5a7ea",
+      "path": "run_sprite0825_icm_native_admission.sh"
+    },
+    {
+      "original_path": "run_sprite0825_icm_native_walk40_inner.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "78a972fd2f1d1214498633ef9f581ad28ac191e5ea4bc166b2783a2c43420743",
+      "path": "run_sprite0825_icm_native_walk40_inner.sh"
+    },
+    {
+      "original_path": "run_sprite0825_icm_native_walk40_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "37be8f0e74d9a3201223b7c537274313632879588d6ede6d8c60d1eea0db3a73",
+      "path": "run_sprite0825_icm_native_walk40_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_left_ankle_low_joint_pd_500hz_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "e7550e23910c6402d5de2c1da3d3f18ce8301b00c4e4a1ea9fbaad5805788324",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_left_ankle_low_joint_pd_500hz_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_left_ankle_zero_torque_500hz_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "6a4f99bb2ba76ace78b0748dbfe7f2ace2ae26fe85c0b8f1eec02f90df0c90a8",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_left_ankle_zero_torque_500hz_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_live_policy_shadow_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "25ce4ffa74b95abbbde8737fdf1880ca5bf245856a64a9c684ded6936d9ddcaa",
+      "path": "scripts/archive/legacy_trials/run_sprite0825_live_policy_shadow_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_native_actor_admission_candidate.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "01e1f93b43da197224d034c56e4401ecaa49e74d87d3d077ba23d5b22bc656f6",
+      "path": "run_sprite0825_native_actor_admission_candidate.sh"
+    },
+    {
+      "original_path": "run_sprite0825_native_bno_waist60kd3_walk40_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "cf7ae5b0f49a21074b594c990d5a20156f21b57c51c70f7bd0b008079f83c0be",
+      "path": "scripts/archive/imu_diagnostics/run_sprite0825_native_bno_waist60kd3_walk40_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_native_protected_policy_admission_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "f93244419a918c2084c9e54e734a10e1a875d5525ab9506f8176838e0e278479",
+      "path": "scripts/archive/legacy_trials/run_sprite0825_native_protected_policy_admission_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_right_ankle_pitch_direction_gate_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "f0e8e3e8a5ec827be8ddc6665bbbe5b58718c21d381bf050bba6d49faf426844",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_right_ankle_pitch_direction_gate_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_right_ankle_pitch_direction_observable_gate_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "23dbd942f8b33c9b441f4abce99c3cc47602b78c04ab76b0c84f10984e44de8f",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_right_ankle_pitch_direction_observable_gate_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_right_ankle_pitch_negative_slow_gate_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "456de2cbdd9cdeaf0ca0623860a9b3d53b586969e832c34132695d1662cf9a87",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_right_ankle_pitch_negative_slow_gate_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_right_ankle_zero_torque_500hz_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "74529384f5467d7253c5b098f93792d55c6b635503dcdc334737455f32e8fbf1",
+      "path": "scripts/archive/motor_commissioning/run_sprite0825_right_ankle_zero_torque_500hz_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_software_imu_walk40_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "961e71eae6b34c0e9dbb1e427568a1968b3ecfcd6afe57516b7f3e9aac4ff552",
+      "path": "run_sprite0825_software_imu_walk40_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_upper_body_pd_native_admission.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "d9e35ee6ce24d4348af023e5f6c22be3479ebb5fe6f067aa6782f99c11afc1cc",
+      "path": "run_sprite0825_upper_body_pd_native_admission.sh"
+    },
+    {
+      "original_path": "run_sprite0825_upper_body_pd_native_walk40_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "10bac3178dcad7d16636ac565b4d22f3faf48839ad54fe3c1538b16b48e70542",
+      "path": "run_sprite0825_upper_body_pd_native_walk40_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_imu_turn120_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "6c8ae9143db57677f02c0f6ddc81b0f5959134f819a2f40e9c3e145eeda7e777",
+      "path": "run_sprite0825_xbox_imu_turn120_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_imu800_turn120_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "9dc982d1f39634aabf22a4e0d56062201a71406d7367c8e4311ca7eab3a2bdbc",
+      "path": "run_sprite0825_xbox_imu800_turn120_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_admission.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "228a4552a58d0c61f74f5e4554cd35729318e8d37fd77284c0347fa50c6359d2",
+      "path": "run_sprite0825_xbox_native_admission.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_forward120_inner.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "ad49a4834641ef06203f42917e1aae5fa78b5a9afd95b0e7d51bcc065da0c240",
+      "path": "run_sprite0825_xbox_native_forward120_inner.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_forward120_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "160ce74d12081154559587ab54a41216edb1d3728463f422fe3eaff7c7ad95d6",
+      "path": "run_sprite0825_xbox_native_forward120_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_forward40_inner.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "f812a8760bbaec3e55ba8144e1ad6af573ac5d11522daa9246d399026b82a612",
+      "path": "run_sprite0825_xbox_native_forward40_inner.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_forward40_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "79dbc680b57fae5586153f281d5e165d35005b63a6adab7cacbdecbff330cf94",
+      "path": "run_sprite0825_xbox_native_forward40_on_253.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_turn120_inner.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "fe919df6273562c9da9105f88366e0044c2cc812c246abd4c681586dff9cb687",
+      "path": "run_sprite0825_xbox_native_turn120_inner.sh"
+    },
+    {
+      "original_path": "run_sprite0825_xbox_native_turn120_on_253.sh",
+      "retained": true,
+      "reason": "Referenced by repository code, tests, or candidate seals",
+      "sha256_lf": "351052a6175463bd495caeafedd5b3226580a94e55f8400b443a76bb210db792",
+      "path": "run_sprite0825_xbox_native_turn120_on_253.sh"
+    },
+    {
+      "original_path": "scope_sprite0825_icm45686_100khz_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "e29ef5299a6a22611d3dd6bab9958107141044804e87a58b4d4a3aba476a2070",
+      "path": "scripts/archive/imu_diagnostics/scope_sprite0825_icm45686_100khz_on_253.sh"
+    },
+    {
+      "original_path": "scope_sprite0825_icm45686_500khz_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "7d1dc6552e2d023491bbcb59b672e46d8857dfc134402eed52ca7c81434078e2",
+      "path": "scripts/archive/imu_diagnostics/scope_sprite0825_icm45686_500khz_on_253.sh"
+    },
+    {
+      "original_path": "scope_sprite0825_spi_aaaa_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "41756d73f9c9b1432fc06e150e6305366dfacb628f2001780dc431b9c9690394",
+      "path": "scripts/archive/imu_diagnostics/scope_sprite0825_spi_aaaa_on_253.sh"
+    },
+    {
+      "original_path": "scope_sprite0825_spi3_aaaa_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "09b67c9cd946e02acce1ba609d295da24b3a60c7a0753cf73b5d703efcc6761e",
+      "path": "scripts/archive/imu_diagnostics/scope_sprite0825_spi3_aaaa_on_253.sh"
+    },
+    {
+      "original_path": "set_sprite0825_head_damiao_zero_on_253.sh",
+      "retained": false,
+      "reason": "Historical commissioning reference; use the pre-cleanup checkout for execution",
+      "sha256_lf": "76f8bbd4be1dc4e7d49cd7c7e62a61bfa27c888a24215937d42e4011f9747c58",
+      "path": "scripts/archive/motor_commissioning/set_sprite0825_head_damiao_zero_on_253.sh"
+    },
+    {
+      "original_path": "setup_sprite_spi_low_clock_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "21fcb7d7d2098654e54eae132c86b9970a4bee6d88ada72140ad9b0bc1610677",
+      "path": "setup_sprite_spi_low_clock_on_253.sh"
+    },
+    {
+      "original_path": "setup_sprite0825_kcanfd_on_253.sh",
+      "retained": true,
+      "reason": "Current build, setup, OpenIMU, or compatibility entry",
+      "sha256_lf": "909de0e4b30cf0bfdfb0177f346b32e08f72fcd85aaccb70fc591fe3e33176e5",
+      "path": "setup_sprite0825_kcanfd_on_253.sh"
+    }
+  ]
+}
