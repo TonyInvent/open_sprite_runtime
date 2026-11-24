@@ -2,7 +2,8 @@
   "scope": "Supervised commissioning on the existing calibrated robot; not unattended qualification",
   "date": "2026-11-24",
   "timezone": "Asia/Shanghai",
-  "selected_backend": "icm-spi",
+  "tested_backend": "icm-spi",
+  "backend_role": "Legacy compatibility, rollback, and comparison; OpenIMU is the primary development path",
   "entry": "run_sprite0825_xbox_imu800_turn120_on_253.sh",
   "required_backend_argument": "--imu icm-spi",
   "rates_hz": {
@@ -33,7 +34,7 @@
     "maximum_lateness_ms": 0.037876,
     "motors_verified_disabled": 31,
     "controller_errors": [],
-    "operator_feedback": "Walking normal; no observed oscillation; selected this version"
+    "operator_feedback": "Walking normal; no observed oscillation in this SPI compatibility trial"
   },
   "original_client_comparison": {
     "run": "icm_20261124_181742",

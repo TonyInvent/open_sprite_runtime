@@ -1,14 +1,19 @@
 # Open Sprite Runtime
 
 Canonical repository: [TonyInvent/open_sprite_runtime](https://github.com/TonyInvent/open_sprite_runtime).
-## Selected SPI Xbox entry: 800 Hz snapshots (November 24, 2026)
 
-The operator selected the **SPI ICM-45686 + 800 Hz asynchronous snapshot client**
-after a successful supervised 120-second Xbox walking test. Walking was reported
-normal and no oscillation was observed by the operator in that trial. The native
-controller recorded 6,000 policy targets, zero scheduling deadline misses, and
-verified all 31 motors disabled at completion. This is a bounded hardware result,
-not proof of universal gait improvement or approval for unattended operation.
+## OpenIMU 800 Hz Xbox runtime
+
+**OpenIMU over CAN FD is the primary IMU backend and the focus of ongoing
+development.** The recommended entry uses nominal 800 Hz raw-six-axis acquisition
+and an 800 Hz asynchronous latest-snapshot client, with the stable 50 Hz policy,
+50 Hz ordinary-joint commands, and 500 Hz ankle control.
+
+SPI ICM-45686 is retained for legacy compatibility, rollback, and comparison
+tests. A successful SPI test does not make SPI the primary backend. Future work
+is OpenIMU-first; SPI compatibility does not imply feature parity for future
+updates. The two backends are mutually exclusive during walking, with no blending
+or automatic failover.
 
 On the already provisioned Jetson, with battery power, fall arrest, clear space,
 and an independent power-cut operator ready:
@@ -16,14 +21,19 @@ and an independent power-cut operator ready:
 ```bash
 cd /home/tony/open_sprite_runtime_openimu
 # Offline integrity checks only; no sensor or motor access.
-bash run_sprite0825_xbox_imu800_turn120_on_253.sh --check --imu icm-spi
-# Explicitly selected SPI backend; supervised powered operation.
-sudo bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
+bash run_sprite0825_xbox_imu800_turn120_on_253.sh --check
+# Recommended: OpenIMU CAN FD (the default); supervised powered operation.
+bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120
 ```
 
-| Layer | Selected SPI entry |
+OpenIMU uses a dedicated CAN FD interface named `spriteimu0`, configured at
+1 Mbit/s arbitration / 5 Mbit/s data. It must be brought up after reboot. See
+[OpenIMU installation and commissioning](docs/OPENIMU_MIXED_RATE_XBOX.md) for
+persistent interface naming, configuration, and receive-only checks.
+
+| Layer | Primary OpenIMU entry |
 | --- | --- |
-| Sensor acquisition / software attitude estimator | Nominal **800 Hz**, 1 MHz SPI |
+| Raw-six-axis acquisition / software attitude estimator | Nominal **800 Hz**, CAN FD; hardware sample timestamps drive estimator timing |
 | Asynchronous latest-snapshot requests | Nominal **800 Hz**, 1.25 ms request period |
 | Native ONNX policy / ordinary 27 motors | **50 Hz** |
 | Host ankle PD / four ankle motor commands | **500 Hz** |
@@ -37,16 +47,9 @@ must pass before the powered 120-second schedule begins. LT enables walking
 commands; LB+RB held for 3 seconds requests disable. Fall arrest must support the
 robot after disable.
 
-The new wrapper defaults to OpenIMU if `--imu icm-spi` is omitted. **Use the
-explicit SPI option for the hardware result above.** Both backends share the new
-client, but this latest no-oscillation observation is specific to the SPI trial.
-The original selector still uses its original 200 Hz snapshot-client actor, and
-the original SPI script remains the rollback path:
-
-```bash
-cd /home/tony/open_sprite_runtime
-sudo bash run_sprite0825_xbox_native_turn120_on_253.sh ENABLE_XBOX_TURN120
-```
+The wrapper defaults to OpenIMU; `--imu openimu` is an optional explicit spelling.
+Use the `imu800` entry above for 800 Hz snapshot requests. The earlier selector
+without `800` in its filename still uses the original 200 Hz snapshot client.
 
 The new entry requires the separately provisioned, sealed
 `candidates/imu_client800_powered_20261124` package and the existing calibrated
@@ -55,44 +58,46 @@ baseline. It is not installed just by cloning this repository. See
 for build tools, prerequisites, the earlier small-step report, and the successful
 follow-up. No existing deployment is overwritten by this publication.
 
-## OpenIMU Xbox walking (November 24, 2026)
+## SPI compatibility and earlier entries
 
-The OpenIMU integration preserves the stable **50 Hz ordinary-joint / 500 Hz ankle** Xbox
-runtime. The new `run_sprite0825_xbox_imu_turn120_on_253.sh` selector defaults to
-OpenIMU raw-six-axis CAN FD; `--imu icm-spi` delegates to the original SPI entry.
-The old scripts, actor, gains, motor controller and safety limits are unchanged.
-This is not the all-motor-500 Hz experiment. See
-[OpenIMU integration and commissioning](docs/OPENIMU_MIXED_RATE_XBOX.md) for
-protocol, timestamps, installation, offline checks and the qualification status.
-
-One supervised **120-second powered Xbox session completed successfully** on
-November 24. The operator confirmed walking; the controller recorded zero
-deadline misses and verified all 31 motors disabled at completion. This is a
-bounded commissioning result, not unrestricted or unattended walking approval.
-
-On the already provisioned Jetson, use the separate OpenIMU deployment:
+These are explicit comparison or rollback commands, **not the recommended
+OpenIMU entry**. All require the same supervised operating conditions.
 
 ```bash
 cd /home/tony/open_sprite_runtime_openimu
-# Default: OpenIMU CAN FD, with the original policy and motor parameters.
+# SPI compatibility test: 800 Hz sensor and 800 Hz snapshot requests.
+sudo bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
+# Earlier OpenIMU entry: 800 Hz sensor, original 200 Hz snapshot client.
 bash run_sprite0825_xbox_imu_turn120_on_253.sh ENABLE_XBOX_TURN120
-# Alternative: the original ICM-45686 SPI entry, including its power-management setup.
-sudo bash run_sprite0825_xbox_imu_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
+# Original stable SPI deployment: 800 Hz sensor, 200 Hz snapshot client.
+cd /home/tony/open_sprite_runtime
+sudo bash run_sprite0825_xbox_native_turn120_on_253.sh ENABLE_XBOX_TURN120
 ```
 
+The original scripts, installed binaries, gains, limits, and motor controller
+remain unchanged. This is not the all-motor-500 Hz experiment.
+
+The initial OpenIMU integration completed a supervised 120-second walk on
+November 24. The shared 800 Hz snapshot client subsequently passed separate
+zero-gain tests with both backends. The SPI compatibility follow-up at 18:22
+also completed 120 seconds with zero deadline misses and all 31 motors verified
+disabled; the operator reported normal walking and no observed oscillation in
+that SPI trial. That observation must not be presented as an OpenIMU measurement
+or as a change in the project's primary backend. See
+[the backend-specific development record](docs/IMU_SNAPSHOT800_CANDIDATE_20261124.md).
+These are bounded commissioning results, not unrestricted walking approval.
+
+## Operating schedule and deployment scope
+
 Keep still for the first 15 seconds of gyro-bias calibration. An 8-second
-zero-gain preflight follows; these phases are outside the powered 120 seconds.
+zero-gain preflight follows; both are outside the powered 120 seconds.
 The powered schedule is 0-10 s standing, 10-110 s LT-rearmed forward/turn control,
 then a final standing interval and disable at 120 s. Forward is limited to
 0.10 m/s, turning to +/-0.10 rad/s; reverse is blocked. Release LT to stop the
-walking command. Hold LB+RB for 3 seconds to request immediate disable. Fall
-arrest, a clear movement area and an independent power-cut operator are required.
+walking command. Hold LB+RB for 3 seconds to request immediate disable.
 
-OpenIMU uses a dedicated PCAN-USB FD interface named `spriteimu0`, configured at
-1 Mbit/s arbitration / 5 Mbit/s data. The linked guide covers persistent naming,
-explicit interface bring-up after reboot, receive-only tests and SPI rollback.
-These commands require the existing calibrated baseline deployment; cloning
-this repository alone does not install the external G74 deployment package.
+These commands require the existing calibrated deployment; cloning this
+repository alone does not install the external G74 deployment package.
 
 Safety-gated Sim2Real runtime work for Sprite0825. The current deployment
 candidate is the native-50 Hz G74 `model3000`, qualified after the proximal
@@ -116,7 +121,8 @@ The operator reported disappearance of the previous left-leg straightening
 pattern, much straighter travel, and stable starts/stops. Controller reports
 confirmed successful completion and all 31 motors disabled after each run.
 See the [ICM walking milestone](docs/ICM45686_WALKING_20261016.md) for evidence,
-fixed gains, commands, and limitations. BNO055 remains the rollback path.
+fixed gains, commands, and limitations. BNO055 was the earlier rollback backend;
+it is retained as historical compatibility, not the current development path.
 This remains supervised commissioning, not unrestricted walking approval.
 Motor mapping, directions,
 mechanical limits, IMU convention, four 500 Hz CAN-FD bus tests, differential
@@ -129,7 +135,7 @@ exact acknowledgement token; receive-only inspection tools remain available.
 The current candidate uses native ONNX Runtime CPU inference at **50 Hz**,
 an independent native raw-six-axis reader/software estimator at nominal
 **800 Hz**, using **OpenIMU CAN FD by default in the new selector** or the
-original **ICM45686 over 1 MHz SPI** (about 792 Hz measured),
+compatibility **ICM45686 over 1 MHz SPI** (about 792 Hz measured),
 and a native CAN controller with a **2 kHz scheduling loop**. That scheduler
 transmits to **each ankle motor at 500 Hz** and **each other motor at 50 Hz**;
 it does **not** update every motor at 2 kHz. Python still prepares and supervises
@@ -139,7 +145,7 @@ state. Startup requires 15 seconds of stillness for gyro bias estimation.
 Gyro observations are raw gyro minus bias, rotated into body coordinates;
 projected gravity comes from the software estimator, without magnetometer fusion.
 See [software IMU design](docs/BNO055_SOFTWARE_FUSION.md).
-The BNO055 rollback uses the same estimator architecture at 200 Hz over I2C.
+The historical BNO055 backend uses the same estimator architecture at 200 Hz over I2C.
 ICM data has its own validated IPC format; it is not decoded as BNO register data.
 
 The `*_on_253.sh` entries are site-specific commissioning scripts. Their model,

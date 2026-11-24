@@ -2,7 +2,12 @@
 
 ## Current status
 
-The SPI entry was selected by the operator after the successful supervised
+**OpenIMU CAN FD with 800 Hz acquisition and 800 Hz snapshot requests is the
+primary runtime and ongoing development path.** SPI is a compatibility,
+rollback, and comparison backend, not the preferred deployment. Future updates
+may be OpenIMU-specific; equivalent SPI feature development is not promised.
+
+The SPI compatibility entry completed the successful supervised
 120-second follow-up at `20261124_182201`. The operator reported normal walking
 and no observed oscillation. Controller and actor reports both passed, with
 6,001 states, 6,000 targets, zero scheduling deadline misses, maximum lateness
@@ -292,7 +297,7 @@ stays 800 Hz in both cases; only the snapshot client differs. Until then the
 original stable entry remains the recommended baseline. No rollback file or
 powered entry was modified by this investigation.
 
-## Successful SPI follow-up and selection
+## Successful SPI compatibility follow-up
 
 On 2026-11-24 the user corrected a right-ankle linkage/encoder-turn situation and
 power-cycled the robot. Earlier preflights at 18:10:54 and 18:12:59 rejected the
@@ -317,7 +322,7 @@ The new SPI snapshot-client B run, `20261124_182201`, completed normally:
 | Scheduler deadline misses | 0 |
 | Maximum scheduling lateness | 0.037876 ms |
 | Final motor status | all 31 verified disabled |
-| Operator feedback | walking normal; no observed oscillation; selected this version |
+| Operator feedback | walking normal; no observed oscillation in this SPI compatibility trial |
 
 Source reports are `native_protected_policy_actor_imu800_20261124_182201.json`
 and `native_protected_policy_admission_imu800_20261124_182201.json` in the baseline
@@ -325,19 +330,24 @@ deployment's `reports` directory. Compact public evidence, including source
 hashes, is in [the release summary](evidence/IMU800_SPI_20261124.json). Raw motor
 traces and machine-specific sealed candidate binaries are not bundled here.
 
-The selected command is:
+The SPI compatibility test command is:
 
 ```bash
 cd /home/tony/open_sprite_runtime_openimu
 sudo bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
 ```
 
-The `--imu icm-spi` argument is essential: the new wrapper defaults to OpenIMU
+For this compatibility test, `--imu icm-spi` is essential: the wrapper defaults to OpenIMU
 when omitted. Both producers remain mutually exclusive. The original entry
 still uses its original 200 Hz snapshot-client actor; no default selector was
 silently redirected. Existing offline preparation receipts keep their original
 `powered_test_completed: false` status because they describe preparation, not
 this later physical test. The release summary records the subsequent result.
+
+For the primary OpenIMU runtime, use the same `imu800` wrapper without
+`--imu icm-spi` (or with `--imu openimu`). The SPI test result does not change that
+recommendation, and its subjective no-oscillation observation is not transferred
+to OpenIMU.
 
 ## Provisioning boundaries
 

@@ -2,6 +2,16 @@
 
 ## Scope and status
 
+**The primary runtime is OpenIMU CAN FD at nominal 800 Hz with an 800 Hz
+asynchronous snapshot client.** Use `run_sprite0825_xbox_imu800_turn120_on_253.sh`
+for this path; it defaults to OpenIMU. Future development prioritizes OpenIMU.
+SPI remains an explicit compatibility/rollback/comparison option, not a promise
+of equal feature updates. The original selector without `800` in its filename
+retains the earlier 200 Hz snapshot client. See
+[the shared-client update](IMU_SNAPSHOT800_CANDIDATE_20261124.md) for prerequisites
+and backend-specific evidence. The earlier commissioning records below retain
+the rates and commands actually used at the time.
+
 This candidate starts from `4515206c24404e18a2d5c168eccdb7468aea6ab7`, not
 the experimental `xbox_500hz` branch. It adds an IMU selector around the existing
 sealed Xbox turn120 admission. The original entry scripts and installed control
@@ -11,9 +21,9 @@ this integration completed its first supervised 120-second powered Xbox walk;
 the operator confirmed walking and all 31 motors were verified disabled at
 completion. See the powered evidence section below for the exact scope.
 
-The canonical repository is now
-[TonyInvent/open_sprite_runtime](https://github.com/TonyInvent/open_sprite_runtime),
-formerly hosted under BeijingDynamics. Keep the existing baseline deployment
+The canonical repository is
+[TonyInvent/open_sprite_runtime](https://github.com/TonyInvent/open_sprite_runtime).
+Keep the existing baseline deployment
 intact when installing this additive selector.
 
 | Component | Unchanged rate / behavior |
@@ -188,20 +198,22 @@ ground truth; unknown mounting mismatch and body flex must be considered.
 
 ### Walking entry
 
-Default OpenIMU:
+Primary OpenIMU, after provisioning the reviewed 800 Hz snapshot candidate:
 
 ```bash
 cd /home/tony/open_sprite_runtime_openimu
-sudo bash run_sprite0825_xbox_imu_turn120_on_253.sh ENABLE_XBOX_TURN120
+bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120
 ```
 
-Explicit original SPI fallback:
+Explicit SPI compatibility test with the same 800 Hz snapshot client:
 
 ```bash
-sudo bash run_sprite0825_xbox_imu_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
+sudo bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
 ```
 
-SPI selection delegates directly to the original stable PM wrapper. There is
+The 800 Hz candidate uses the original SPI producer and an isolated copy of the
+reviewed power-management wrapper. The earlier selector without `800` still
+delegates directly to the original SPI entry. There is
 **no automatic IMU failover** during a session. OpenIMU loss stops its producer;
 existing policy freshness/watchdog checks and whole-body disable handling remain
 active. There is no motor enable before successful readiness checks. A physical

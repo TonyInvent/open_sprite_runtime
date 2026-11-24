@@ -145,8 +145,8 @@ a shared hypothesis, not a demonstrated root cause; relevant 5-15 Hz energy
 also exists directly in the full-rate raw data. Adding a strong low-pass filter
 blindly could increase control delay and should not be bundled with other changes.
 
-The subsequently selected SPI entry uses the shared client's 1.25 ms request
-period. See [the follow-up record](IMU_SNAPSHOT800_CANDIDATE_20261124.md); the
+The subsequent OpenIMU-first entry and its SPI compatibility option use the
+shared client's 1.25 ms request period. See [the follow-up record](IMU_SNAPSHOT800_CANDIDATE_20261124.md); the
 measurements in this original audit still describe the earlier 5 ms client.
 
 ## Recommended next controlled change
