@@ -19,3 +19,13 @@ add_executable(icm_packet_test packet_test.cpp)
 target_include_directories(icm_packet_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
 target_link_libraries(icm_packet_test PRIVATE Threads::Threads)
 add_test(NAME icm_packet COMMAND icm_packet_test)
+
+# Separate receiver: the qualified SPI executable and motor controller are unchanged.
+add_executable(sprite_openimu openimu_main.cpp openimu.cpp)
+target_include_directories(sprite_openimu PRIVATE ${SPRITE_IMU_INCLUDE_DIR})
+target_link_libraries(sprite_openimu PRIVATE tdk_icm Threads::Threads)
+target_compile_options(sprite_openimu PRIVATE -Wall -Wextra -Werror)
+add_executable(openimu_test openimu_test.cpp)
+target_include_directories(openimu_test PRIVATE ${SPRITE_IMU_INCLUDE_DIR})
+target_link_libraries(openimu_test PRIVATE tdk_icm)
+add_test(NAME openimu_canfd COMMAND openimu_test)

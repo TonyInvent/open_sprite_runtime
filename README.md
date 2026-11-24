@@ -1,5 +1,52 @@
 # Open Sprite Runtime
 
+Canonical repository: [TonyInvent/open_sprite_runtime](https://github.com/TonyInvent/open_sprite_runtime).
+The repository has moved from the BeijingDynamics organization to TonyInvent.
+Existing clones can update their remote with:
+
+```bash
+git remote set-url origin https://github.com/TonyInvent/open_sprite_runtime.git
+```
+
+## OpenIMU Xbox walking (November 24, 2026)
+
+The OpenIMU integration preserves the stable **50 Hz ordinary-joint / 500 Hz ankle** Xbox
+runtime. The new `run_sprite0825_xbox_imu_turn120_on_253.sh` selector defaults to
+OpenIMU raw-six-axis CAN FD; `--imu icm-spi` delegates to the original SPI entry.
+The old scripts, actor, gains, motor controller and safety limits are unchanged.
+This is not the all-motor-500 Hz experiment. See
+[OpenIMU integration and commissioning](docs/OPENIMU_MIXED_RATE_XBOX.md) for
+protocol, timestamps, installation, offline checks and the qualification status.
+
+One supervised **120-second powered Xbox session completed successfully** on
+November 24. The operator confirmed walking; the controller recorded zero
+deadline misses and verified all 31 motors disabled at completion. This is a
+bounded commissioning result, not unrestricted or unattended walking approval.
+
+On the already provisioned Jetson, use the separate OpenIMU deployment:
+
+```bash
+cd /home/tony/open_sprite_runtime_openimu
+# Default: OpenIMU CAN FD, with the original policy and motor parameters.
+bash run_sprite0825_xbox_imu_turn120_on_253.sh ENABLE_XBOX_TURN120
+# Alternative: the original ICM-45686 SPI entry, including its power-management setup.
+sudo bash run_sprite0825_xbox_imu_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
+```
+
+Keep still for the first 15 seconds of gyro-bias calibration. An 8-second
+zero-gain preflight follows; these phases are outside the powered 120 seconds.
+The powered schedule is 0-10 s standing, 10-110 s LT-rearmed forward/turn control,
+then a final standing interval and disable at 120 s. Forward is limited to
+0.10 m/s, turning to +/-0.10 rad/s; reverse is blocked. Release LT to stop the
+walking command. Hold LB+RB for 3 seconds to request immediate disable. Fall
+arrest, a clear movement area and an independent power-cut operator are required.
+
+OpenIMU uses a dedicated PCAN-USB FD interface named `spriteimu0`, configured at
+1 Mbit/s arbitration / 5 Mbit/s data. The linked guide covers persistent naming,
+explicit interface bring-up after reboot, receive-only tests and SPI rollback.
+These commands require the existing calibrated baseline deployment; cloning
+this repository alone does not install the external G74 deployment package.
+
 Safety-gated Sim2Real runtime work for Sprite0825. The current deployment
 candidate is the native-50 Hz G74 `model3000`, qualified after the proximal
 shoulder pitch/roll motors were changed to J4340P. Its frozen actor, contract,
@@ -33,8 +80,9 @@ exact acknowledgement token; receive-only inspection tools remain available.
 ## Timing contract
 
 The current candidate uses native ONNX Runtime CPU inference at **50 Hz**,
-an independent native ICM45686 raw-six-axis reader/software estimator at nominal
-**800 Hz** over **1 MHz SPI** (about 792 Hz measured),
+an independent native raw-six-axis reader/software estimator at nominal
+**800 Hz**, using **OpenIMU CAN FD by default in the new selector** or the
+original **ICM45686 over 1 MHz SPI** (about 792 Hz measured),
 and a native CAN controller with a **2 kHz scheduling loop**. That scheduler
 transmits to **each ankle motor at 500 Hz** and **each other motor at 50 Hz**;
 it does **not** update every motor at 2 kHz. Python still prepares and supervises
@@ -68,7 +116,7 @@ test scope and site-specific provisioning requirements.
 | Layer | Configured rate | What runs at this rate |
 |---|---|---|
 | Native policy inference | **50 Hz**, 20 ms | Produces joint targets; receives a latest-state motor snapshot via IPC at 50 Hz. |
-| Native software IMU | ICM **800 Hz**, nominal 1.25 ms; BNO rollback **200 Hz**, 5 ms | Independently reads raw six-axis data and estimates gravity; policy consumes the latest valid state. SPI bitrate and sensor ODR are different quantities. |
+| Native software IMU | OpenIMU CAN FD or ICM SPI **800 Hz**, nominal 1.25 ms; BNO rollback **200 Hz**, 5 ms | Independently reads raw six-axis data and estimates gravity; policy consumes the latest valid state. CAN/SPI bitrate and sensor ODR are different quantities. |
 | Native CAN scheduler | **2 kHz**, 0.5 ms | Services due transmit slots across four buses, drains received feedback and checks the policy target watchdog. Not a per-motor update rate. |
 | Host ankle PD / parallel linkage calculation | **500 Hz**, 2 ms | Recomputes ankle motor feed-forward torques from held policy targets and latest joint feedback. |
 | Four ankle motors: command and feedback polling | **500 Hz per motor**, 2 ms | Sends MIT feed-forward torque commands with motor-side Kp/Kd zero. The two motors in each pair occupy staggered CAN slots. |
