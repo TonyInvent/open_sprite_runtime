@@ -12,6 +12,11 @@
 #include <cstdlib>
 
 namespace sprite_policy {
+// SPI ICM45686 and CAN-FD OpenIMU both publish icm-v3 at nominal 800 Hz.
+// Keep acquisition asynchronous: policy snapshots must never wait for IPC.
+inline constexpr std::chrono::microseconds imu_snapshot_period(bool icm) {
+    return std::chrono::microseconds(icm ? 1250 : 5000);
+}
 inline std::uint64_t monotonic_ns() {
     return std::chrono::duration_cast<std::chrono::nanoseconds>(
         std::chrono::steady_clock::now().time_since_epoch()).count();
@@ -101,7 +106,7 @@ class NativeImuClient {
                 auto s=validate_imu_packet(packet.data(),static_cast<std::size_t>(n),monotonic_ns(),previous,software_fusion_,icm_);
                 previous=s.sequence;
                 { std::lock_guard<std::mutex> lock(mutex_);latest_=s; }
-                std::this_thread::sleep_until(begin+std::chrono::milliseconds(5));
+                std::this_thread::sleep_until(begin+imu_snapshot_period(icm_));
             }
         } catch (const std::exception& e) {
             std::lock_guard<std::mutex> lock(mutex_);error_=e.what();

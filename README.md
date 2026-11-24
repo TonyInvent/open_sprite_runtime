@@ -8,6 +8,60 @@ Existing clones can update their remote with:
 git remote set-url origin https://github.com/TonyInvent/open_sprite_runtime.git
 ```
 
+## Selected SPI Xbox entry: 800 Hz snapshots (November 24, 2026)
+
+The operator selected the **SPI ICM-45686 + 800 Hz asynchronous snapshot client**
+after a successful supervised 120-second Xbox walking test. Walking was reported
+normal and no oscillation was observed by the operator in that trial. The native
+controller recorded 6,000 policy targets, zero scheduling deadline misses, and
+verified all 31 motors disabled at completion. This is a bounded hardware result,
+not proof of universal gait improvement or approval for unattended operation.
+
+On the already provisioned Jetson, with battery power, fall arrest, clear space,
+and an independent power-cut operator ready:
+
+```bash
+cd /home/tony/open_sprite_runtime_openimu
+# Offline integrity checks only; no sensor or motor access.
+bash run_sprite0825_xbox_imu800_turn120_on_253.sh --check --imu icm-spi
+# Explicitly selected SPI backend; supervised powered operation.
+sudo bash run_sprite0825_xbox_imu800_turn120_on_253.sh ENABLE_XBOX_TURN120 --imu icm-spi
+```
+
+| Layer | Selected SPI entry |
+| --- | --- |
+| Sensor acquisition / software attitude estimator | Nominal **800 Hz**, 1 MHz SPI |
+| Asynchronous latest-snapshot requests | Nominal **800 Hz**, 1.25 ms request period |
+| Native ONNX policy / ordinary 27 motors | **50 Hz** |
+| Host ankle PD / four ankle motor commands | **500 Hz** |
+| Native CAN scheduling loop | **2 kHz**, not a per-motor update rate |
+
+Only the snapshot request period changed from 5 ms to 1.25 ms. The model, gains,
+limits, sensor filtering, actual-timestamp estimator integration, and CAN binary
+are unchanged. Sensor I/O stays outside policy inference and motor control.
+Keep still for the initial 15-second calibration; the existing zero-gain preflight
+must pass before the powered 120-second schedule begins. LT enables walking
+commands; LB+RB held for 3 seconds requests disable. Fall arrest must support the
+robot after disable.
+
+The new wrapper defaults to OpenIMU if `--imu icm-spi` is omitted. **Use the
+explicit SPI option for the hardware result above.** Both backends share the new
+client, but this latest no-oscillation observation is specific to the SPI trial.
+The original selector still uses its original 200 Hz snapshot-client actor, and
+the original SPI script remains the rollback path:
+
+```bash
+cd /home/tony/open_sprite_runtime
+sudo bash run_sprite0825_xbox_native_turn120_on_253.sh ENABLE_XBOX_TURN120
+```
+
+The new entry requires the separately provisioned, sealed
+`candidates/imu_client800_powered_20261124` package and the existing calibrated
+baseline. It is not installed just by cloning this repository. See
+[snapshot-client validation and deployment record](docs/IMU_SNAPSHOT800_CANDIDATE_20261124.md)
+for build tools, prerequisites, the earlier small-step report, and the successful
+follow-up. No existing deployment is overwritten by this publication.
+
 ## OpenIMU Xbox walking (November 24, 2026)
 
 The OpenIMU integration preserves the stable **50 Hz ordinary-joint / 500 Hz ankle** Xbox
@@ -117,6 +171,7 @@ test scope and site-specific provisioning requirements.
 |---|---|---|
 | Native policy inference | **50 Hz**, 20 ms | Produces joint targets; receives a latest-state motor snapshot via IPC at 50 Hz. |
 | Native software IMU | OpenIMU CAN FD or ICM SPI **800 Hz**, nominal 1.25 ms; BNO rollback **200 Hz**, 5 ms | Independently reads raw six-axis data and estimates gravity; policy consumes the latest valid state. CAN/SPI bitrate and sensor ODR are different quantities. |
+| Asynchronous IMU snapshot client | Selected `imu800` entry: nominal **800 Hz**, 1.25 ms; original entries: **200 Hz**, 5 ms | Requests the producer's latest state in a separate thread; the 50 Hz policy only copies the cached result. Not the sensor ODR or estimator integration timestep. |
 | Native CAN scheduler | **2 kHz**, 0.5 ms | Services due transmit slots across four buses, drains received feedback and checks the policy target watchdog. Not a per-motor update rate. |
 | Host ankle PD / parallel linkage calculation | **500 Hz**, 2 ms | Recomputes ankle motor feed-forward torques from held policy targets and latest joint feedback. |
 | Four ankle motors: command and feedback polling | **500 Hz per motor**, 2 ms | Sends MIT feed-forward torque commands with motor-side Kp/Kd zero. The two motors in each pair occupy staggered CAN slots. |

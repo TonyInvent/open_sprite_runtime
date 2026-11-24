@@ -1,0 +1,58 @@
+{
+  "scope": "Supervised commissioning on the existing calibrated robot; not unattended qualification",
+  "date": "2026-11-24",
+  "timezone": "Asia/Shanghai",
+  "selected_backend": "icm-spi",
+  "entry": "run_sprite0825_xbox_imu800_turn120_on_253.sh",
+  "required_backend_argument": "--imu icm-spi",
+  "rates_hz": {
+    "sensor_nominal": 800,
+    "asynchronous_snapshot_requests_nominal": 800,
+    "policy": 50,
+    "ordinary_motor_commands": 50,
+    "ankle_motor_commands": 500,
+    "can_scheduler": 2000
+  },
+  "spi_requested_hz": 1000000,
+  "snapshot_period_us": 1250,
+  "policy_pd_limits_and_can_binary_changed": false,
+  "original_entry_preserved": true,
+  "successful_followup": {
+    "run": "imu800_20261124_182201",
+    "controller_report": "native_protected_policy_admission_imu800_20261124_182201.json",
+    "controller_report_sha256": "6a4930e361504fe75b102cc554667b9ea8549a1f49b57805343829d4b9369a9b",
+    "actor_report": "native_protected_policy_actor_imu800_20261124_182201.json",
+    "actor_report_sha256": "7220e319a971cc0358b29732f07978aab88665a323ac3d8cb1b2766c940b675d",
+    "controller_passed": true,
+    "actor_passed": true,
+    "actor_exit": 0,
+    "duration_s": 120,
+    "policy_state_count": 6001,
+    "policy_target_count": 6000,
+    "deadline_misses": 0,
+    "maximum_lateness_ms": 0.037876,
+    "motors_verified_disabled": 31,
+    "controller_errors": [],
+    "operator_feedback": "Walking normal; no observed oscillation; selected this version"
+  },
+  "original_client_comparison": {
+    "run": "icm_20261124_181742",
+    "controller_report_sha256": "a21069c3e47259f44cac7b75802272289c379bebae9fd2157512c0a2a18d74c4",
+    "controller_passed": false,
+    "actor_exit": 1,
+    "policy_state_count": 5219,
+    "policy_target_count": 5218,
+    "deadline_misses": 0,
+    "motors_verified_disabled": 31,
+    "controller_errors": ["policy IPC client disconnected"],
+    "interruption_cause": "Not established by these reports",
+    "complete_120s_comparison": false
+  },
+  "limitations": [
+    "The operator observation is not an independently quantified vibration measurement.",
+    "The earlier small-step SPI trial remains in the development record; its cause is not established.",
+    "The comparison is not a completed controlled A-B-A experiment.",
+    "The latest no-oscillation observation applies to SPI, not both IMU backends.",
+    "Raw motor traces and machine-specific sealed binaries are not included in this public summary."
+  ]
+}

@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from openimu_interface import find_openimu, require_active
-from xbox_imu_session import ACK, arguments, legacy_command, no_running_runtime
+from xbox_imu_session import ACK, CLIENT800, arguments, legacy_command, admission_directory, no_running_runtime
 
 
 class SelectorTests(unittest.TestCase):
@@ -18,6 +18,19 @@ class SelectorTests(unittest.TestCase):
         args = arguments(["--check"])
         self.assertEqual(args.imu, "openimu")
         self.assertEqual(args.action, "--check")
+        self.assertEqual(args.snapshot_client_hz, 200)
+
+    def test_both_800_backends_use_same_candidate(self):
+        for backend in ("openimu", "icm-spi"):
+            args = arguments([ACK, "--imu", backend, "--snapshot-client-hz", "800"])
+            self.assertEqual(admission_directory(args), CLIENT800)
+            if backend == "icm-spi":
+                self.assertEqual(Path(legacy_command(args)[1]).parent, CLIENT800)
+
+    def test_client800_does_not_claim_viewer_changes(self):
+        with contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):
+                arguments(["--imu-only", "--snapshot-client-hz", "800"])
 
     def test_powered_is_explicit(self):
         with contextlib.redirect_stderr(io.StringIO()):

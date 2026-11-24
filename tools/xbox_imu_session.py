@@ -20,6 +20,7 @@ ACK = "ENABLE_XBOX_TURN120"
 SPI_ENTRY = "run_sprite0825_xbox_native_turn120_on_253.sh"
 INNER = "run_sprite0825_xbox_native_turn120_inner.sh"
 CANDIDATE = "candidates/xbox_native_turn120_20261019"
+CLIENT800 = ROOT / "candidates/imu_client800_powered_20261124"
 
 
 def arguments(argv=None):
@@ -34,6 +35,8 @@ def arguments(argv=None):
     parser.add_argument("--duration", type=int, default=60, help="IMU-only seconds after calibration, 1..560")
     parser.add_argument("--view", action="store_true", help="MuJoCo attitude display with --imu-only; no motor access")
     parser.add_argument("--baseline-root", type=Path, default=Path("/home/tony/open_sprite_runtime"))
+    parser.add_argument("--snapshot-client-hz", type=int, choices=[200, 800], default=200,
+                        help="200 retains the original actor; 800 selects the separately qualified candidate")
     args = parser.parse_args(argv)
     selected = [name for name, enabled in [("--check", args.check), ("--imu-only", args.imu_only),
                                           ("--preflight-only", args.preflight_only)] if enabled]
@@ -50,11 +53,23 @@ def arguments(argv=None):
         parser.error("--duration only applies to --imu-only; walking remains the sealed 120s")
     if args.view and (args.action != "--imu-only" or args.imu != "openimu"):
         parser.error("--view requires --imu-only with OpenIMU")
+    if args.snapshot_client_hz == 800 and args.action == "--imu-only":
+        parser.error("800 Hz actor selection does not apply to the receive-only viewer")
     return args
 
 
 def legacy_command(args):
-    return ["bash", str(args.baseline_root / SPI_ENTRY), args.action]
+    folder = CLIENT800 if args.snapshot_client_hz == 800 else args.baseline_root
+    return ["bash", str(folder / SPI_ENTRY), args.action]
+
+
+def admission_directory(args):
+    return CLIENT800 if args.snapshot_client_hz == 800 else args.baseline_root / CANDIDATE
+
+
+def check_client_candidate(args):
+    if args.snapshot_client_hz == 800:
+        subprocess.run([sys.executable, str(CLIENT800 / "check_powered_seal.py")], check=True)
 
 
 def check_baseline(root):
@@ -134,9 +149,11 @@ def session(args):
     producer = ROOT / "build/openimu/sprite_openimu"
     if args.action != "--imu-only":
         check_baseline(baseline)
+        check_client_candidate(args)
     subprocess.run([str(producer), "--help"], check=True)
     if args.action == "--check":
-        print("MIXED_RATE_OPENIMU_CHECK_OK: existing actor, gains and CAN binary unchanged; no hardware access")
+        print("MIXED_RATE_OPENIMU_CHECK_OK: snapshot_client_hz=" + str(args.snapshot_client_hz)
+              + "; gains and CAN binary unchanged; no hardware access")
         return 0
     viewer_cmd = ["python3", str(ROOT / "tools/view_openimu.py"),
                   "--baseline-root", str(baseline)]
@@ -147,10 +164,12 @@ def session(args):
     no_running_runtime()
     report_root = ROOT / "reports"
     report_root.mkdir(exist_ok=True)
-    out = Path(tempfile.mkdtemp(prefix="xbox_openimu_", dir=report_root))
+    prefix = "xbox_imu800_openimu_" if args.snapshot_client_hz == 800 else "xbox_openimu_"
+    out = Path(tempfile.mkdtemp(prefix=prefix, dir=report_root))
     report = dict(imu="openimu", adapter=adapter, action=args.action, passed=False,
                   policy_hz=50, ordinary_motor_hz=50, ankle_motor_hz=500,
-                  imu_nominal_hz=800, errors=[])
+                  imu_nominal_hz=800, snapshot_client_hz=args.snapshot_client_hz,
+                  admission_directory=str(admission_directory(args)), errors=[])
     print("REPORT_DIRECTORY", out, flush=True)
     print("Keep stationary for 15s. OpenIMU receive-only calibration; motor CAN has not started.", flush=True)
     with tempfile.TemporaryDirectory(prefix="sprite_openimu_") as folder, (out / "imu.log").open("w") as imu_log:
@@ -202,7 +221,7 @@ def session(args):
             else:
                 print("IMU_READY: starting unchanged mixed-rate Xbox admission. See baseline reports for CAN/actor results.", flush=True)
                 with (out / "admission.log").open("w") as log:
-                    walk = subprocess.Popen(["bash", str(baseline / CANDIDATE / "admission.sh"), ACK],
+                    walk = subprocess.Popen(["bash", str(admission_directory(args) / "admission.sh"), ACK],
                                             cwd=baseline, env=env, stdout=log, stderr=subprocess.STDOUT,
                                             start_new_session=True)
                     # Tail outside the real-time processes; IMU and CAN never wait for this terminal.
@@ -240,7 +259,8 @@ def session(args):
 def main():
     args = arguments()
     if args.imu == "icm-spi":
-        # This is the original script, not a reimplementation of SPI or walking.
+        # Each entry keeps the original SPI producer; only the candidate actor differs.
+        check_client_candidate(args)
         os.execvp("bash", legacy_command(args))
     if os.geteuid() == 0:
         if os.environ.get("SUDO_USER") != "tony":
